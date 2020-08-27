@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image convert/resize tool</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <form
+        action="/upload"
+        method="POST"
+        enctype="multipart/form-data"
+        id="form"
+      >
+        <fieldset>
+          <legend>Upload source image</legend>
+
+          <input type="file" name="image_source" accept="image/*" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Choose image type(s) to convert</legend>
+
+          <label>
+            <input type="checkbox" name="image_type[]" value="jpeg" />
+            jpeg/jpg
+          </label>
+
+          <br />
+
+          <label>
+            <input type="checkbox" name="image_type[]" value="png" />
+            png
+          </label>
+
+          <br />
+
+          <label>
+            <input type="checkbox" name="image_type[]" value="webp" />
+            webP
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Choose image sizes</legend>
+
+          <div data-sizes-row>
+            <label>
+              Width:
+              <input type="number" name="image_sizes[0][width]" />
+            </label>
+
+            <label>
+              Height:
+              <input type="number" name="image_sizes[0][height]" />
+            </label>
+          </div>
+
+          <button type="button" class="btn-small" data-add-sizes-row>
+            Add new image sizes row
+          </button>
+        </fieldset>
+
+        <button>Get converted images</button>
+        <button type="reset">Clear fields</button>
+      </form>
+    </div>
+  </body>
+</html>

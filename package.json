@@ -1,0 +1,22 @@
+{
+  "name": "converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js -e"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jszip": "^3.5.0",
+    "multer": "^1.4.2",
+    "sharp": "^0.25.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

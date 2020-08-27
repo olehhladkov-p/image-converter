@@ -1,0 +1,95 @@
+:root {
+  --border-radius: 4px;
+  --body-bg: #f3f3f3;
+  --dark: #000;
+  --light: #fff;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background-color: var(--body-bg);
+}
+
+img {
+  max-width: 100%;
+}
+
+fieldset {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #111;
+  border-radius: var(--border-radius);
+}
+
+legend {
+  padding: 3px 10px 5px;
+  font-size: 20px;
+  color: var(--light);
+  border-radius: inherit;
+  background-color: var(--dark);
+}
+
+label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+label:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+input {
+  cursor: inherit;
+}
+
+button {
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 18px;
+  color: var(--dark);
+  border: 1px solid;
+  border-radius: var(--border-radius);
+  background-color: var(--light);
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+button:hover {
+  color: var(--light);
+  background-color: var(--dark);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+
+  width: 10ch;
+  padding: 5px;
+  border: 1px solid var(--dark);
+  border-radius: var(--border-radius);
+}
+
+.form-wrapper {
+  padding: 15px;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  font-size: 14px;
+}
