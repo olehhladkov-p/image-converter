@@ -119,5 +119,5 @@ app.get('/archive', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is up on http://localhost:${port}.`);
+  console.log(`Server is up on port: ${port}.`);
 });
