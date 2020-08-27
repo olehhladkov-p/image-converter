@@ -28,39 +28,45 @@
         <fieldset>
           <legend>Choose image type(s) to convert</legend>
 
-          <label>
-            <input type="checkbox" name="image_type[]" value="jpeg" />
-            jpeg/jpg
-          </label>
+          <div class="d-flex flex-column align-items-start">
+            <label class="mb-1">
+              <input type="checkbox" name="image_type[]" value="jpeg" />
+              jpeg/jpg
+            </label>
 
-          <br />
+            <label class="mb-1">
+              <input type="checkbox" name="image_type[]" value="png" />
+              png
+            </label>
 
-          <label>
-            <input type="checkbox" name="image_type[]" value="png" />
-            png
-          </label>
-
-          <br />
-
-          <label>
-            <input type="checkbox" name="image_type[]" value="webp" />
-            webP
-          </label>
+            <label>
+              <input type="checkbox" name="image_type[]" value="webp" />
+              webP
+            </label>
+          </div>
         </fieldset>
 
         <fieldset>
           <legend>Choose image sizes</legend>
 
-          <div data-sizes-row>
+          <div class="d-flex align-items-center mb-1" data-sizes-row>
             <label>
               Width:
               <input type="number" name="image_sizes[0][width]" />
             </label>
 
-            <label>
+            <label class="ml-1">
               Height:
               <input type="number" name="image_sizes[0][height]" />
             </label>
+
+            <button
+              type="button"
+              class="btn-remove ml-2"
+              aria-label="Remove sizes row"
+            >
+              &times;
+            </button>
           </div>
 
           <button type="button" class="btn-small" data-add-sizes-row>
@@ -68,8 +74,8 @@
           </button>
         </fieldset>
 
-        <button>Get converted images</button>
-        <button type="reset">Clear fields</button>
+        <button class="btn">Get converted images</button>
+        <button type="reset" class="btn">Clear fields</button>
       </form>
     </div>
   </body>

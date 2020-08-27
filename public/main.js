@@ -55,7 +55,7 @@ const handleSizeRows = (form) => {
 
   let counter = 1;
 
-  addRowButton.addEventListener('click', () => {
+  const addSizesRow = () => {
     const newRow = row.cloneNode(true);
     const inputs = newRow.querySelectorAll('input[type="number"]');
 
@@ -69,6 +69,28 @@ const handleSizeRows = (form) => {
     counter = counter + 1;
 
     addRowButton.before(newRow);
+  };
+
+  const removeSizesRow = (target) => {
+    const row = target.closest('[data-sizes-row]');
+
+    if (!row.parentNode) {
+      return;
+    }
+
+    row.parentNode.removeChild(row);
+  };
+
+  form.addEventListener('click', (e) => {
+    const target = e.target;
+
+    if (target === addRowButton) {
+      return addSizesRow();
+    }
+
+    if (target.matches('.btn-remove')) {
+      return removeSizesRow(target);
+    }
   });
 };
 
