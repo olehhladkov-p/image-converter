@@ -61,25 +61,25 @@
           <div class="d-flex align-items-center mb-1" data-sizes-row>
             <label>
               Width:
-              <input type="number" name="image_sizes[0][]" />
+              <input type="number" name="image_sizes[0][width]" />
             </label>
 
             <label class="ml-1">
               Height:
-              <input type="number" name="image_sizes[0][]" />
+              <input type="number" name="image_sizes[0][height]" />
             </label>
-
-            <button
-              type="button"
-              class="btn-remove ml-2"
-              aria-label="Remove sizes row"
-            >
-              &times;
-            </button>
           </div>
 
           <button type="button" class="btn-small" data-add-sizes-row>
             Add new image sizes row
+          </button>
+          <button
+            type="button"
+            class="btn-small ml-2"
+            data-remove-sizes-row
+            hidden
+          >
+            Delete image sizes row
           </button>
         </fieldset>
 
