@@ -90,6 +90,10 @@ button[disabled] {
   cursor: not-allowed;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .mb-1 {
   margin-bottom: 1rem;
 }

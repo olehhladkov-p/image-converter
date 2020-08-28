@@ -64,35 +64,52 @@ const handleFormSubmit = (form) => {
 
 const handleSizeRows = (form) => {
   const addRowButton = form.querySelector('[data-add-sizes-row]');
-  const row = form.querySelector('[data-sizes-row]');
-
-  if (!addRowButton || !row) {
-    return;
-  }
-
-  let counter = 1;
+  const removeRowButton = form.querySelector('[data-remove-sizes-row]');
 
   const addSizesRow = () => {
-    const newRow = row.cloneNode(true);
-    const inputs = newRow.querySelectorAll('input[type="number"]');
+    if (!addRowButton) {
+      return;
+    }
 
-    inputs.forEach((input) => {
-      const newName = input.name.replace('[0]', `[${counter}]`);
+    const rows = form.querySelectorAll('[data-sizes-row]');
+    const currentRowIndex = rows.length - 1;
+    const row = rows[currentRowIndex];
+
+    const currentIputs = row.querySelectorAll('input[type="number"]');
+    const isSomeInputFilled = [...currentIputs].some(({ value }) => value);
+
+    if (!isSomeInputFilled) {
+      return;
+    }
+
+    const newRow = row.cloneNode(true);
+    const newInputs = newRow.querySelectorAll('input[type="number"]');
+
+    newInputs.forEach((input) => {
+      const newName = input.name.replace(
+        `[${currentRowIndex}]`,
+        `[${currentRowIndex + 1}]`
+      );
 
       input.setAttribute('name', newName);
       input.value = null;
     });
 
-    counter = counter + 1;
-
     addRowButton.before(newRow);
+    removeRowButton.removeAttribute('hidden');
   };
 
-  const removeSizesRow = (target) => {
-    const row = target.closest('[data-sizes-row]');
-
-    if (!row.parentNode) {
+  const removeSizesRow = () => {
+    if (!removeRowButton) {
       return;
+    }
+
+    const rows = form.querySelectorAll('[data-sizes-row]');
+    const currentRowIndex = rows.length - 1;
+    const row = rows[currentRowIndex];
+
+    if (currentRowIndex <= 1) {
+      removeRowButton.setAttribute('hidden', true);
     }
 
     row.parentNode.removeChild(row);
@@ -105,7 +122,7 @@ const handleSizeRows = (form) => {
       return addSizesRow();
     }
 
-    if (target.matches('.btn-remove')) {
+    if (target === removeRowButton) {
       return removeSizesRow(target);
     }
   });
