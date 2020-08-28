@@ -1,9 +1,14 @@
 :root {
   --border-radius: 4px;
-  --body-bg: #f3f3f3;
-  --dark: #000;
+  --dark: #24292e;
   --light: #fff;
-  --danger: #f00;
+  --gray: #e9e9e9;
+  --gray-light: #f6f8fa;
+  --danger: #cb2431;
+  --danger-darken: #a9212c;
+  --btn-hover: #f3f4f6;
+  --success: #2ea44f;
+  --success-darken: #2c974b;
 }
 
 html {
@@ -19,10 +24,10 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   font-size: 1.6rem;
-  font-weight: 300;
-  background-color: var(--body-bg);
+  background-color: var(--light);
 }
 
 img {
@@ -32,13 +37,15 @@ img {
 fieldset {
   margin-bottom: 2rem;
   padding: 2rem;
-  border: 1px solid #111;
+  border: 1px solid var(--gray);
   border-radius: var(--border-radius);
+  background-color: var(--gray-light);
 }
 
 legend {
   padding: 0.3rem 1rem 0.5rem;
   font-size: 2rem;
+  font-weight: 300;
   color: var(--light);
   border-radius: inherit;
   background-color: var(--dark);
@@ -49,11 +56,8 @@ label {
   cursor: pointer;
 }
 
-/* label:not(:last-child) {
-  margin-bottom: 1rem;
-} */
-
 input {
+  line-height: normal;
   cursor: inherit;
 }
 
@@ -67,31 +71,27 @@ input[type='number'] {
 
   width: 10ch;
   padding: 0.5rem;
-  border: 1px solid var(--dark);
+  border: 1px solid var(--gray);
   border-radius: var(--border-radius);
 }
 
 button {
   font-family: inherit;
+  line-height: 1.4;
   color: var(--dark);
-  border: 1px solid;
+  border: 1px solid var(--gray);
   border-radius: var(--border-radius);
   background-color: var(--light);
   transition: color 0.15s, background-color 0.15s;
 }
 
 button:not([disabled]):hover {
-  color: var(--light);
-  background-color: var(--dark);
+  background-color: var(--btn-hover);
   cursor: pointer;
 }
 
 button[disabled] {
   cursor: not-allowed;
-}
-
-[hidden] {
-  display: none !important;
 }
 
 .mb-1 {
@@ -123,12 +123,12 @@ button[disabled] {
 }
 
 .form-wrapper {
-  padding: 1.5rem;
+  padding: 3rem 2rem;
 }
 
 .btn {
-  padding: 1rem 2rem;
-  font-size: 1.8rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.6rem;
 }
 
 .btn-small {
@@ -147,9 +147,26 @@ button[disabled] {
   line-height: normal;
 }
 
+.btn-success {
+  color: var(--light);
+  background-color: var(--success);
+}
+
+.btn-success:not([disabled]):hover {
+  background-color: var(--success-darken);
+}
+
+.btn-danger {
+  color: var(--light);
+  background-color: var(--danger);
+}
+
+.btn-danger:not([disabled]):hover {
+  background-color: var(--danger-darken);
+}
+
 .error-message {
   margin-top: 1rem;
   font-size: 1.4rem;
-  font-weight: normal;
   color: var(--danger);
 }
