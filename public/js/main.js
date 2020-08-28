@@ -1,3 +1,5 @@
+import validateForm from './validation/index.js';
+
 const downloadFile = (blob, archiveType = 'zip') => {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
@@ -11,14 +13,27 @@ const downloadFile = (blob, archiveType = 'zip') => {
   document.body.removeChild(link);
 };
 
-const handleForm = (form) => {
+const handleFormSubmit = (form) => {
+  form.noValidate = true;
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const isFormValid = validateForm(form);
+
+    if (!isFormValid) {
+      return;
+    }
+
+    const submitButton = [...form.elements].find(
+      ({ type }) => type === 'submit'
+    );
     const url = `${location.origin}${form.getAttribute('action')}`;
     const formData = new FormData(form);
 
     try {
+      submitButton.setAttribute('disabled', true);
+
       const { success, download_url: downloadUrl, error } = await (
         await fetch(url, {
           method: form.getAttribute('method'),
@@ -41,6 +56,8 @@ const handleForm = (form) => {
       downloadFile(blob);
     } catch (error) {
       alert(error.message);
+    } finally {
+      submitButton.removeAttribute('disabled');
     }
   });
 };
@@ -101,6 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  handleForm(form);
+  handleFormSubmit(form);
   handleSizeRows(form);
 });
