@@ -9,7 +9,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./main.js" defer></script>
   </head>
   <body>
     <div class="form-wrapper">
@@ -19,45 +18,55 @@
         enctype="multipart/form-data"
         id="form"
       >
-        <fieldset>
+        <fieldset class="fieldset">
           <legend>Upload source image</legend>
 
-          <input type="file" name="image_source" accept="image/*" />
+          <input type="file" name="image_source" accept="image/*" required />
         </fieldset>
 
-        <fieldset>
+        <fieldset class="fieldset">
           <legend>Choose image type(s) to convert</legend>
 
           <div class="d-flex flex-column align-items-start">
             <label class="mb-1">
-              <input type="checkbox" name="image_type[]" value="jpeg" />
+              <input
+                type="checkbox"
+                name="image_type[]"
+                value="jpeg"
+                required
+              />
               jpeg/jpg
             </label>
 
             <label class="mb-1">
-              <input type="checkbox" name="image_type[]" value="png" />
+              <input type="checkbox" name="image_type[]" value="png" required />
               png
             </label>
 
             <label>
-              <input type="checkbox" name="image_type[]" value="webp" />
-              webP
+              <input
+                type="checkbox"
+                name="image_type[]"
+                value="webp"
+                required
+              />
+              webp
             </label>
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="fieldset">
           <legend>Choose image sizes</legend>
 
           <div class="d-flex align-items-center mb-1" data-sizes-row>
             <label>
               Width:
-              <input type="number" name="image_sizes[0][width]" />
+              <input type="number" name="image_sizes[0][]" />
             </label>
 
             <label class="ml-1">
               Height:
-              <input type="number" name="image_sizes[0][height]" />
+              <input type="number" name="image_sizes[0][]" />
             </label>
 
             <button
@@ -78,5 +87,7 @@
         <button type="reset" class="btn">Clear fields</button>
       </form>
     </div>
+
+    <script src="./js/main.js" type="module"></script>
   </body>
 </html>
